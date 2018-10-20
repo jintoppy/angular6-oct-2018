@@ -1,0 +1,13 @@
+<!-- <input type="text" #myInput [value]="inputValue"> -->
+<div class="header">
+    <h2>Title received from parent {{myTitle}}</h2>
+    <input type="text" [(ngModel)]="inputValue">
+    <button
+        [title]="myButtonTitle"
+        (click)="onBtnClick()">
+        Click me
+    </button>
+    <div>
+        {{inputValue}}
+    </div>
+</div>
