@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+interface IMyEventProps{
+  timeOfCompletetion: Date;
+  lastItemUrl: string;
+}
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
@@ -14,7 +18,7 @@ export class SlideshowComponent implements OnInit {
   list: string[];
 
   @Output()
-  onEnd: EventEmitter<string> = new EventEmitter<string>();
+  onSlideEnd: EventEmitter<IMyEventProps> = new EventEmitter<IMyEventProps>();
 
   ngOnInit() {
   }
@@ -23,7 +27,11 @@ export class SlideshowComponent implements OnInit {
     this.activeIndex = this.activeIndex +1;
     if(this.activeIndex === this.list.length -1){
       this.isButtonDisabled = true;
-      this.onEnd.emit('completed');
+      const eventProps: IMyEventProps = {
+        timeOfCompletetion: new Date(),
+        lastItemUrl: this.list[this.activeIndex]
+      };
+      this.onSlideEnd.emit(eventProps);
     }
   }
 

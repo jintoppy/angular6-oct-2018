@@ -1,28 +1,36 @@
 import { Component } from '@angular/core';
-
+import { AppService } from './app.service';
+import { ImageService } from './image.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  catList: string[] = [
-    'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg',
-    'https://cdn-images-1.medium.com/max/1600/1*mONNI1lG9VuiqovpnYqicA.jpeg',
-    'https://peopledotcom.files.wordpress.com/2018/02/two-tone-cat.jpg'
-  ];
+  users: object[] = [];
+  catList: string[] = [];
+  dogList: string[] = [];
 
-  dogList: string[] = [
-    'https://www.rspcansw.org.au/wp-content/uploads/2017/08/50_a-feature_dogs-and-puppies_mobile.jpg',
-    'https://i.kinja-img.com/gawker-media/image/upload/s--WFkXeene--/c_scale,f_auto,fl_progressive,q_80,w_800/ol9ceoqxidudap8owlwn.jpg',
-    'https://hips.hearstapps.com/ghk.h-cdn.co/assets/18/12/boxer-dog.jpg'
-  ];
-
-  onCatSlideComplete(){
+  onCatSlideComplete(event){
+    console.log(event);
     alert('Cat slideshow completed');
   }
 
-  onDogSlideComplete(){
+  constructor(
+    private service: AppService,
+    private imgService: ImageService
+  ){
+    
+  }
+
+  ngOnInit(){
+    this.users = this.service.getUsers();
+    this.catList = this.imgService.getCatList();
+    this.dogList = this.imgService.getDogList();
+  }
+
+  onDogSlideComplete(e){
+    console.log(e);
     alert('Dog slideshow completed');
   }
   
