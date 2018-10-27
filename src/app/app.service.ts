@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { IUser } from './models/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  private users = [
-    {
-      name: 'abc'
-    },
-    {
-      name: 'def'
-    }
-  ];
 
+  constructor(private http: HttpClient) {
 
-  constructor() { }
+  }
 
-  getUsers(){
-    return this.users;
+  getUsers(): Observable<IUser[]> {
+    return this.http.get<IUser[]>('/assets/data/users.json');
   };  
+
 }

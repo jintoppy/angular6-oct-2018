@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 interface IMyEventProps{
   timeOfCompletetion: Date;
   lastItemUrl: string;
