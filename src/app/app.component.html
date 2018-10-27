@@ -1,13 +1,14 @@
+<div class="container-fluid">
+        <h2>App Component</h2>
 
-<h2>App Component</h2>
-
-<app-header></app-header>
-
-<app-slideshow [list]="catList" (onSlideEnd)="onCatSlideComplete($event)"></app-slideshow>
-<app-slideshow [list]="dogList" (onSlideEnd)="onDogSlideComplete($event)"></app-slideshow>
-
-<ul>
-    <li *ngFor="let user of users">
-        {{user.name}}
-    </li>
-</ul>
+        <app-header></app-header>
+        
+        <app-slideshow [list]="catList" (onSlideEnd)="onCatSlideComplete($event)"></app-slideshow>
+        <app-slideshow [list]="dogList" (onSlideEnd)="onDogSlideComplete($event)"></app-slideshow>
+        
+        <ul>
+            <li *ngFor="let user of users">
+                {{user.name}}
+            </li>
+        </ul>
+</div>
